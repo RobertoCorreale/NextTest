@@ -28,7 +28,7 @@ steps:
   
   - script: |
       # Install urlencode function to encode reserved characters in passwords
-      sudo apt-get install gridsite-clients
+      # sudo apt-get install gridsite-clients
 
       # echo "https://roberto.correale:$(AZURE_GIT_TOKEN)@https://prada-acn@dev.azure.com/prada-acn/next-deploy/_git/next-deploy next-deploy"
 
