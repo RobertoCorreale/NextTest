@@ -27,9 +27,21 @@ steps:
     #displayName: 'npm install and build'
   
   - script: |
+      # Install urlencode function to encode reserved characters in passwords
+      sudo apt-get install gridsite-clients
+
+      # Create local mirror of Azure DevOps repository
+      git clone --mirror https://${roberto.correale}:$(urlencode ${AZURE_GIT_TOKEN})@${https://prada-acn@dev.azure.com/prada-acn/next-deploy/_git/next-deploy} my-mirror-repo
+
+      # Sync AWS CodeCommit repository
+      cd my-mirror-repo
+      git push --mirror https://$(GITHUB_TOKEN)@github.com/RobertoCorreale/NextTest.git"
+    displayName: 'Sync repository with AWS CodeCommit'
+
+
       # Configura il remote per GitHub
-      git remote add github "https://$(GITHUB_TOKEN)@github.com/RobertoCorreale/NextTest.git"
-      git config user.name "Azure DevOps"
-      git config user.email "devops@azure.com"
-      git push --mirror github
-    displayName: 'Push to GitHub'
+      #git remote add github "https://$(GITHUB_TOKEN)@github.com/RobertoCorreale/NextTest.git"
+      #git config user.name "Azure DevOps"
+      #git config user.email "devops@azure.com"
+      #git push --mirror github
+    #displayName: 'Push to GitHub'
