@@ -11,6 +11,7 @@ export default async function Home() {
 
   return (
     <>
+        <h1>Amplify è bellissimo</h1>
       <article>
         <h2>
           Latest mission: <LatestMissionName />
