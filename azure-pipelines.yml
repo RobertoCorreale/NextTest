@@ -34,7 +34,7 @@ steps:
 
       # Create local mirror of Azure DevOps repository
       # git clone --mirror https://roberto.correale:$(AZURE_GIT_TOKEN)@prada-acn@dev.azure.com/prada-acn/next-deploy/_git/next-deploy next-deploy
-      git clone https://$(AZURE_GIT_TOKEN)@dev.azure.com/prada-acn/next-deploy/_git/next-deploy next-deploy
+      git clone --mirror https://$(AZURE_GIT_TOKEN)@dev.azure.com/prada-acn/next-deploy/_git/next-deploy next-deploy
 
 
       # Sync AWS CodeCommit repository
