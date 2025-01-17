@@ -27,11 +27,8 @@ steps:
     #displayName: 'npm install and build'
   
   - script: |
-      # Install urlencode function to encode reserved characters in passwords
-      sudo apt-get install gridsite-clients
-
       # Create local mirror of Azure DevOps repository
-      git clone --mirror https://${roberto.correale}:$(urlencode ${AZURE_GIT_TOKEN})@${https://prada-acn@dev.azure.com/prada-acn/next-deploy/_git/next-deploy} my-mirror-repo
+      git clone --mirror https://${roberto.correale}:${AZURE_GIT_TOKEN}@${https://prada-acn@dev.azure.com/prada-acn/next-deploy/_git/next-deploy} my-mirror-repo
 
       # Sync AWS CodeCommit repository
       cd my-mirror-repo
