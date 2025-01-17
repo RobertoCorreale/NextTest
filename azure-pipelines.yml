@@ -9,11 +9,6 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-variables:
-  githubRepository: 'RobertoCorreale/NextTest'  # Sostituisci con il tuo repository GitHub
-  githubToken: $(GITHUB_TOKEN)  # Variabile del token GitHub
-      
-
 steps:
   - task: NodeTool@0
     inputs:
@@ -27,25 +22,11 @@ steps:
     #displayName: 'npm install and build'
   
   - script: |
-      # Install urlencode function to encode reserved characters in passwords
-      # sudo apt-get install gridsite-clients
-
-      # echo "https://roberto.correale:$(AZURE_GIT_TOKEN)@https://prada-acn@dev.azure.com/prada-acn/next-deploy/_git/next-deploy next-deploy"
-
       # Create local mirror of Azure DevOps repository
-      # git clone --mirror https://roberto.correale:$(AZURE_GIT_TOKEN)@prada-acn@dev.azure.com/prada-acn/next-deploy/_git/next-deploy next-deploy
       git clone --mirror https://$(AZURE_GIT_TOKEN)@dev.azure.com/prada-acn/next-deploy/_git/next-deploy next-deploy
 
-
-      # Sync AWS CodeCommit repository
+      # Sync GitHub repository
       cd next-deploy
       git push --mirror https://$(GITHUB_TOKEN)@github.com/RobertoCorreale/NextTest.git
     displayName: 'Sync repository with AWS CodeCommit'
 
-
-      # Configura il remote per GitHub
-      #git remote add github "https://$(GITHUB_TOKEN)@github.com/RobertoCorreale/NextTest.git"
-      #git config user.name "Azure DevOps"
-      #git config user.email "devops@azure.com"
-      #git push --mirror github
-    #displayName: 'Push to GitHub'
