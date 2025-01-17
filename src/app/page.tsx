@@ -20,7 +20,6 @@ export default async function Home() {
           <div>
               <h1>time: {data && data?.time}</h1>
           </div>
-        <h2>Five Rockets:</h2>
         <Suspense fallback={<div>loading...</div>}>
           <FiveRockets />
         </Suspense>
