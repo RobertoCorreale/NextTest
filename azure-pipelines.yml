@@ -28,7 +28,6 @@ steps:
   
   - script: |
       # Configura il remote per GitHub
-      git fetch --unshallow
       git remote add github "https://$(GITHUB_TOKEN)@github.com/RobertoCorreale/NextTest.git"
       git config user.name "Azure DevOps"
       git config user.email "devops@azure.com"
